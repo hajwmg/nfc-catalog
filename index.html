@@ -9,11 +9,10 @@
         @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&display=swap');
         body { font-family: 'Pretendard', sans-serif; scroll-behavior: smooth; }
         
-        /* 브랜드 메인 컬러 정의 */
         :root {
-            --brand-orange: #FF6B00; /* 메가메디칼 오렌지 */
-            --brand-orange-dark: #E66000; /* 호버 시 사용할 짙은 오렌지 */
-            --brand-dark: #1A1A1A;
+            --brand-orange: #FF6B00; 
+            --brand-orange-dark: #E66000; 
+            --brand-dark: #111827; /* 더 깊은 다크 네이비/블랙으로 푸터 대비감 향상 */
         }
 
         .text-brand-orange { color: var(--brand-orange); }
@@ -21,7 +20,6 @@
         .hover-bg-brand-orange:hover { background-color: var(--brand-orange-dark); }
         .border-brand-orange { border-color: var(--brand-orange); }
 
-        /* PDF 뷰어 컨테이너 */
         .viewer-container {
             width: 100%;
             height: 85vh;
@@ -33,13 +31,11 @@
         }
         iframe { width: 100%; height: 100%; border: none; }
         
-        /* 섹션 카드 스타일 */
         .section-card {
             padding: 2rem 0;
             border-top: 1px solid #f0f0f0;
         }
 
-        /* 애니메이션 효과 */
         .hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease; }
         .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 15px 30px -10px rgba(255, 107, 0, 0.3); }
     </style>
@@ -62,7 +58,6 @@
                 <a href="#doc4" class="text-slate-600 hover:text-brand-orange transition">비강소모품</a>
             </div>
             <div class="flex items-center space-x-3">
-                <!-- 우측 상단 버튼 문구 수정: 공식몰 바로가기 -> 홈페이지 바로가기 -->
                 <a href="http://www.megamedical.co.kr" target="_blank" class="bg-brand-orange text-white px-5 py-2 rounded-full text-xs font-bold hover-bg-brand-orange transition shadow-md">홈페이지 바로가기</a>
             </div>
         </div>
@@ -70,7 +65,6 @@
 
     <!-- Hero Section -->
     <header id="intro" class="pt-40 pb-20 px-6 text-center relative overflow-hidden bg-white border-b border-slate-100">
-        <!-- 배경 장식 요소 -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-5 pointer-events-none">
             <div class="absolute top-10 left-10 w-64 h-64 rounded-full bg-brand-orange blur-3xl"></div>
             <div class="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-orange-400 blur-3xl"></div>
@@ -87,8 +81,9 @@
                 (주)메가메디칼의 2026 KIMES 핵심 라인업을<br class="hidden md:block"> 한눈에 확인할 수 있는 온라인 카탈로그입니다.
             </p>
             <div class="flex flex-wrap justify-center gap-4">
+                <!-- 문구 수정: 카탈로그 시작하기 -> 카탈로그 확인 -->
                 <a href="#doc1" class="bg-brand-orange text-white px-12 py-5 rounded-full text-lg font-bold hover-bg-brand-orange transition shadow-xl hover-lift">
-                    카탈로그 시작하기
+                    카탈로그 확인
                 </a>
             </div>
         </div>
@@ -154,37 +149,43 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-brand-dark text-white pt-24 pb-12 px-6">
+    <footer class="bg-[#111827] text-white pt-24 pb-12 px-6">
         <div class="max-w-5xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-start border-b border-slate-800 pb-12 mb-12">
                 <div class="mb-10 md:mb-0">
-                    <div class="text-4xl font-black mb-6 tracking-tighter">
-                        <span class="text-brand-orange">MEGA</span> MEDICAL
+                    <!-- 하단 로고 가독성 향상 -->
+                    <div class="text-4xl font-black mb-6 tracking-tighter italic">
+                        <span class="text-brand-orange font-black">MEGA</span> <span class="text-white font-black">MEDICAL</span>
                     </div>
-                    <div class="space-y-2 text-slate-400 text-sm font-light">
-                        <p>본사: 서울특별시 강서구 허준로 217 가양비즈메트로 1차 901호</p>
-                        <p>대표번호: 1588-4493 | 팩스: 02-3661-0120</p>
-                        <p>이메일: help@megamedical.co.kr</p>
+                    <div class="space-y-2 text-slate-300 text-sm font-normal">
+                        <p class="hover:text-white transition">본사: 서울특별시 강서구 허준로 217 가양비즈메트로 1차 901호</p>
+                        <p class="hover:text-white transition">대표번호: 1588-4493 | 팩스: 02-3661-0120</p>
+                        <p class="hover:text-white transition">이메일: help@megamedical.co.kr</p>
                     </div>
                 </div>
+                <!-- 퀵링크 가독성 향상 (텍스트 색상 및 호버 효과) -->
                 <div class="grid grid-cols-2 gap-12 text-nowrap">
                     <div>
-                        <h4 class="text-white font-bold mb-4">Quick Links</h4>
-                        <ul class="text-slate-400 text-sm space-y-2 font-light">
-                            <li><a href="http://www.megamedical.co.kr" target="_blank" class="hover:text-brand-orange transition">공식 홈페이지</a></li>
-                            <li><a href="https://smartstore.naver.com/megamedical" target="_blank" class="hover:text-brand-orange transition">공식 쇼핑몰</a></li>
+                        <h4 class="text-white font-bold mb-4 border-l-4 border-brand-orange pl-3">Quick Links</h4>
+                        <ul class="text-slate-300 text-sm space-y-3 font-medium">
+                            <li><a href="http://www.megamedical.co.kr" target="_blank" class="hover:text-brand-orange transition flex items-center">
+                                <span class="mr-2">·</span> 공식 홈페이지
+                            </a></li>
+                            <li><a href="https://shop.megamedical.co.kr/" target="_blank" class="hover:text-brand-orange transition flex items-center">
+                                <span class="mr-2">·</span> 공식 쇼핑몰
+                            </a></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-white font-bold mb-4">Exhibition</h4>
-                        <div class="bg-brand-orange text-white text-[10px] font-bold px-3 py-1 rounded inline-block">KIMES 2026 참가사</div>
+                        <h4 class="text-white font-bold mb-4 border-l-4 border-brand-orange pl-3">Exhibition</h4>
+                        <div class="bg-brand-orange text-white text-xs font-bold px-4 py-1.5 rounded-md shadow-lg">KIMES 2026 참가사</div>
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs">
+            <div class="flex flex-col md:flex-row justify-between items-center text-slate-500 text-[11px] font-medium tracking-wide">
                 <p>© 2026 MEGA MEDICAL Co., Ltd. All Rights Reserved.</p>
                 <div class="mt-4 md:mt-0 flex space-x-6">
-                    <a href="#" class="hover:text-white transition">개인정보처리방침</a>
+                    <a href="#" class="hover:text-brand-orange transition">개인정보처리방침</a>
                     <a href="#" class="hover:text-white transition">이용약관</a>
                 </div>
             </div>
