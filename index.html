@@ -12,31 +12,65 @@
         :root {
             --brand-orange: #FF6B00; 
             --brand-orange-dark: #E66000; 
-            --brand-dark: #111827; /* 더 깊은 다크 네이비/블랙으로 푸터 대비감 향상 */
+            --brand-dark: #111827;
         }
 
         .text-brand-orange { color: var(--brand-orange); }
         .bg-brand-orange { background-color: var(--brand-orange); }
         .hover-bg-brand-orange:hover { background-color: var(--brand-orange-dark); }
-        .border-brand-orange { border-color: var(--brand-orange); }
 
-        .viewer-container {
-            width: 100%;
-            height: 85vh;
-            background: #ffffff;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-            border: 1px solid #eee;
+        /* 인스타그램 스타일 스와이프 컨테이너 */
+        .swipe-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+            border-radius: 12px;
+            background: #f8fafc;
         }
-        iframe { width: 100%; height: 100%; border: none; }
+        .swipe-container::-webkit-scrollbar { display: none; /* Chrome, Safari */ }
         
+        .swipe-item {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .swipe-item img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* 페이지네이션 인디케이터 */
+        .indicator-container {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 12px;
+        }
+        .indicator {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            transition: all 0.3s ease;
+        }
+        .indicator.active {
+            background: var(--brand-orange);
+            width: 18px;
+            border-radius: 10px;
+        }
+
         .section-card {
             padding: 2rem 0;
             border-top: 1px solid #f0f0f0;
         }
 
-        .hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease; }
+        .hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
         .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 15px 30px -10px rgba(255, 107, 0, 0.3); }
     </style>
 </head>
@@ -46,166 +80,179 @@
     <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-orange-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <span class="text-2xl font-black tracking-tighter italic">
+                <span class="text-xl md:text-2xl font-black tracking-tighter italic">
                     <span class="text-brand-orange">MEGA</span> <span class="text-slate-800">MEDICAL</span>
                 </span>
             </div>
             <div class="hidden lg:flex space-x-8 text-sm font-bold">
                 <a href="#intro" class="text-slate-600 hover:text-brand-orange transition">KIMES 2026</a>
-                <a href="#doc1" class="text-slate-600 hover:text-brand-orange transition">영상시스템</a>
-                <a href="#doc2" class="text-slate-600 hover:text-brand-orange transition">이관질환</a>
-                <a href="#doc3" class="text-slate-600 hover:text-brand-orange transition">유닛(1500C)</a>
-                <a href="#doc4" class="text-slate-600 hover:text-brand-orange transition">비강소모품</a>
+                <a href="#doc1" class="text-slate-600 hover:text-brand-orange transition">NET-290F</a>
+                <a href="#doc2" class="text-slate-600 hover:text-brand-orange transition">비강소모품</a>
+                <a href="#doc3" class="text-slate-600 hover:text-brand-orange transition">이관질환</a>
+                <a href="#doc4" class="text-slate-600 hover:text-brand-orange transition">1500C 유닛</a>
             </div>
-            <div class="flex items-center space-x-3">
-                <a href="http://www.megamedical.co.kr" target="_blank" class="bg-brand-orange text-white px-5 py-2 rounded-full text-xs font-bold hover-bg-brand-orange transition shadow-md">홈페이지 바로가기</a>
-            </div>
+            <a href="http://www.megamedical.co.kr" target="_blank" class="bg-brand-orange text-white px-4 py-2 rounded-full text-[10px] md:text-xs font-bold hover-bg-brand-orange transition shadow-md">홈페이지</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header id="intro" class="pt-40 pb-20 px-6 text-center relative overflow-hidden bg-white border-b border-slate-100">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-5 pointer-events-none">
-            <div class="absolute top-10 left-10 w-64 h-64 rounded-full bg-brand-orange blur-3xl"></div>
-            <div class="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-orange-400 blur-3xl"></div>
-        </div>
-
+    <header id="intro" class="pt-32 pb-16 px-6 text-center relative overflow-hidden bg-white border-b border-slate-100">
         <div class="relative z-10">
             <div class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-white bg-brand-orange rounded-md shadow-sm">
                 2026 KIMES EXHIBITION
             </div>
-            <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 leading-tight">
                 Digital <span class="text-brand-orange">Catalog</span>
             </h1>
-            <p class="text-xl text-slate-500 max-w-2xl mx-auto mb-12 font-medium">
-                (주)메가메디칼의 2026 KIMES 핵심 라인업을<br class="hidden md:block"> 한눈에 확인할 수 있는 온라인 카탈로그입니다.
+            <p class="text-lg text-slate-500 max-w-2xl mx-auto mb-8 font-medium">
+                (주)메가메디칼의 핵심 제품 라인업을<br>스와이프로 편리하게 확인하세요.
             </p>
             <div class="flex flex-wrap justify-center gap-4">
-                <!-- 문구 수정: 카탈로그 시작하기 -> 카탈로그 확인 -->
-                <a href="#doc1" class="bg-brand-orange text-white px-12 py-5 rounded-full text-lg font-bold hover-bg-brand-orange transition shadow-xl hover-lift">
-                    카탈로그 확인
+                <a href="#doc1" class="bg-brand-orange text-white px-8 py-4 rounded-full text-md font-bold hover-bg-brand-orange transition shadow-xl hover-lift">
+                    카탈로그 보기
                 </a>
             </div>
         </div>
     </header>
 
     <!-- Content Sections -->
-    <main class="max-w-5xl mx-auto px-6 pb-32 space-y-40">
+    <main class="max-w-3xl mx-auto px-4 pb-32 space-y-24">
 
-        <!-- 1. NET-290F -->
-        <section id="doc1" class="section-card pt-10">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <!-- 1. NET-290F (3장 스와이프) -->
+        <section id="doc1" class="section-card">
+            <div class="flex items-end justify-between mb-6">
                 <div>
-                    <span class="text-brand-orange font-bold text-sm tracking-widest uppercase">Visual System</span>
-                    <h2 class="text-4xl font-extrabold mt-1">NET-290F</h2>
-                    <p class="text-slate-500 mt-2 font-medium">Full HD Endoscopy Visual System</p>
+                    <span class="text-brand-orange font-bold text-xs tracking-widest uppercase">Visual System</span>
+                    <h2 class="text-3xl font-extrabold mt-1 text-slate-900">NET-290F</h2>
                 </div>
-                <div class="flex items-center space-x-2 bg-orange-50 px-3 py-1 rounded-full border border-orange-100">
-                    <span class="w-2.5 h-2.5 rounded-full bg-brand-orange animate-pulse"></span>
-                    <span class="text-xs font-bold text-brand-orange uppercase tracking-wider text-nowrap">Live Preview</span>
+                <div class="text-[10px] font-bold text-slate-400 flex items-center bg-slate-100 px-2 py-1 rounded">
+                    <span class="mr-1">SWIPE</span> ➔
                 </div>
             </div>
-            <div class="viewer-container">
-                <iframe src="290F 카탈로그_2025.11.04.pdf#toolbar=0" title="NET-290F Catalog"></iframe>
+            
+            <div class="swipe-container shadow-2xl" id="slider-290f">
+                <div class="swipe-item"><img src="NET-290F_1.jpg" alt="NET-290F 1" onerror="this.src='https://via.placeholder.com/800x1100?text=NET-290F+1'"></div>
+                <div class="swipe-item"><img src="NET-290F_2.jpg" alt="NET-290F 2" onerror="this.src='https://via.placeholder.com/800x1100?text=NET-290F+2'"></div>
+                <div class="swipe-item"><img src="NET-290F_3.jpg" alt="NET-290F 3" onerror="this.src='https://via.placeholder.com/800x1100?text=NET-290F+3'"></div>
+            </div>
+            <div class="indicator-container" id="indicator-290f">
+                <div class="indicator active"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
             </div>
         </section>
 
-        <!-- 2. 이관 질환 -->
+        <!-- 2. 비강 소모품 (7장 스와이프) -->
         <section id="doc2" class="section-card">
-            <div class="mb-8">
-                <span class="text-brand-orange font-bold text-sm tracking-widest uppercase">Treatment Solutions</span>
-                <h2 class="text-4xl font-extrabold mt-1">이관 질환 종합 솔루션</h2>
-                <p class="text-slate-500 mt-2 font-medium">ETD 진단 및 치료 통합 카탈로그</p>
+            <div class="flex items-end justify-between mb-6">
+                <div>
+                    <span class="text-brand-orange font-bold text-xs tracking-widest uppercase">Surgical Materials</span>
+                    <h2 class="text-3xl font-extrabold mt-1 text-slate-900">비강 소모품 5종</h2>
+                </div>
+                <div class="text-[10px] font-bold text-slate-400 flex items-center bg-slate-100 px-2 py-1 rounded">
+                    <span class="mr-1">SWIPE</span> ➔
+                </div>
             </div>
-            <div class="viewer-container">
-                <iframe src="이관 질환 종합 카탈로그 제작(인쇄 파일).pdf#toolbar=0" title="이관질환 Catalog"></iframe>
+            
+            <div class="swipe-container shadow-2xl" id="slider-navi">
+                <div class="swipe-item"><img src="navi_1.jpg" alt="Navi 1" onerror="this.src='https://via.placeholder.com/800x1100?text=Navi+Page+1'"></div>
+                <div class="swipe-item"><img src="navi_2.jpg" alt="Navi 2" onerror="this.src='https://via.placeholder.com/800x1100?text=Navi+Page+2'"></div>
+                <div class="swipe-item"><img src="navi_3.jpg" alt="Navi 3" onerror="this.src='https://via.placeholder.com/800x1100?text=Navi+Page+3'"></div>
+                <div class="swipe-item"><img src="navi_4.jpg" alt="Navi 4" onerror="this.src='https://via.placeholder.com/800x1100?text=Navi+Page+4'"></div>
+                <div class="swipe-item"><img src="navi_5.jpg" alt="Navi 5" onerror="this.src='https://via.placeholder.com/800x1100?text=Navi+Page+5'"></div>
+                <div class="swipe-item"><img src="navi_6.jpg" alt="Navi 6" onerror="this.src='https://via.placeholder.com/800x1100?text=Navi+Page+6'"></div>
+                <div class="swipe-item"><img src="navi_7.jpg" alt="Navi 7" onerror="this.src='https://via.placeholder.com/800x1100?text=Navi+Page+7'"></div>
+            </div>
+            <div class="indicator-container" id="indicator-navi">
+                <div class="indicator active"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
             </div>
         </section>
 
-        <!-- 3. 1500C -->
+        <!-- 3. 이관질환 (기존 PDF 유지 가능하나 이미지 권장) -->
         <section id="doc3" class="section-card">
-            <div class="mb-8">
-                <span class="text-brand-orange font-bold text-sm tracking-widest uppercase">ENT Unit Series</span>
-                <h2 class="text-4xl font-extrabold mt-1">1500C PREMIUM UNIT</h2>
-                <p class="text-slate-500 mt-2 font-medium">메가메디칼 플래그십 프리미엄 진료 유닛</p>
+            <div class="mb-6">
+                <span class="text-brand-orange font-bold text-xs tracking-widest uppercase">Treatment Solutions</span>
+                <h2 class="text-3xl font-extrabold mt-1 text-slate-900">이관질환 종합 솔루션</h2>
             </div>
-            <div class="bg-white rounded-2xl p-6 flex justify-center border border-slate-200 shadow-lg min-h-[600px] items-center">
-                <img src="1500C 카탈로그.jpg" alt="1500C 카탈로그 이미지" class="max-w-full h-auto rounded-lg shadow-sm" onerror="this.src='https://via.placeholder.com/800x1100?text=1500C+Catalog+Image+Not+Found'">
+            <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-200">
+                <!-- PDF 뷰어 (모바일 대응을 위해 높이 조절) -->
+                <iframe src="이관 질환 종합 카탈로그 제작(인쇄 파일).pdf#toolbar=0" class="w-full h-[500px]" title="이관질환 Catalog"></iframe>
             </div>
         </section>
 
-        <!-- 4. 비강 소모품 -->
+        <!-- 4. 1500C 유닛 -->
         <section id="doc4" class="section-card">
-            <div class="mb-8">
-                <span class="text-brand-orange font-bold text-sm tracking-widest uppercase">Surgical Materials</span>
-                <h2 class="text-4xl font-extrabold mt-1">비강 소모품 5종</h2>
-                <p class="text-slate-500 mt-2 font-medium">이비인후과 수술 및 처치 전문 재료 가이드</p>
+            <div class="mb-6">
+                <span class="text-brand-orange font-bold text-xs tracking-widest uppercase">ENT Unit Series</span>
+                <h2 class="text-3xl font-extrabold mt-1 text-slate-900">1500C Premium</h2>
             </div>
-            <div class="viewer-container">
-                <iframe src="비강소모품5종(최종).pdf#toolbar=0" title="소모품 Catalog"></iframe>
+            <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-200 p-2">
+                <img src="1500C 카탈로그.jpg" alt="1500C" class="w-full h-auto rounded-lg" onerror="this.src='https://via.placeholder.com/800x1100?text=1500C+Catalog'">
             </div>
         </section>
 
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#111827] text-white pt-24 pb-12 px-6">
-        <div class="max-w-5xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-start border-b border-slate-800 pb-12 mb-12">
-                <div class="mb-10 md:mb-0">
-                    <!-- 하단 로고 가독성 향상 -->
-                    <div class="text-4xl font-black mb-6 tracking-tighter italic">
-                        <span class="text-brand-orange font-black">MEGA</span> <span class="text-white font-black">MEDICAL</span>
-                    </div>
-                    <div class="space-y-2 text-slate-300 text-sm font-normal">
-                        <p class="hover:text-white transition">본사: 서울특별시 강서구 허준로 217 가양비즈메트로 1차 901호</p>
-                        <p class="hover:text-white transition">대표번호: 1588-4493 | 팩스: 02-3661-0120</p>
-                        <p class="hover:text-white transition">이메일: help@megamedical.co.kr</p>
-                    </div>
-                </div>
-                <!-- 퀵링크 가독성 향상 (텍스트 색상 및 호버 효과) -->
-                <div class="grid grid-cols-2 gap-12 text-nowrap">
-                    <div>
-                        <h4 class="text-white font-bold mb-4 border-l-4 border-brand-orange pl-3">Quick Links</h4>
-                        <ul class="text-slate-300 text-sm space-y-3 font-medium">
-                            <li><a href="http://www.megamedical.co.kr" target="_blank" class="hover:text-brand-orange transition flex items-center">
-                                <span class="mr-2">·</span> 공식 홈페이지
-                            </a></li>
-                            <li><a href="https://shop.megamedical.co.kr/" target="_blank" class="hover:text-brand-orange transition flex items-center">
-                                <span class="mr-2">·</span> 공식 쇼핑몰
-                            </a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-white font-bold mb-4 border-l-4 border-brand-orange pl-3">Exhibition</h4>
-                        <div class="bg-brand-orange text-white text-xs font-bold px-4 py-1.5 rounded-md shadow-lg">KIMES 2026 참가사</div>
-                    </div>
-                </div>
+    <footer class="bg-[#111827] text-white pt-16 pb-12 px-6">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-3xl font-black mb-8 italic">
+                <span class="text-brand-orange">MEGA</span> <span class="text-white">MEDICAL</span>
             </div>
-            <div class="flex flex-col md:flex-row justify-between items-center text-slate-500 text-[11px] font-medium tracking-wide">
+            <div class="space-y-4 text-slate-400 text-sm mb-12">
+                <p>본사: 서울특별시 강서구 허준로 217 가양비즈메트로 1차 901호</p>
+                <p>고객센터: 1588-4493</p>
+                <p>이메일: help@megamedical.co.kr</p>
+            </div>
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-500 gap-4">
                 <p>© 2026 MEGA MEDICAL Co., Ltd. All Rights Reserved.</p>
-                <div class="mt-4 md:mt-0 flex space-x-6">
-                    <a href="#" class="hover:text-brand-orange transition">개인정보처리방침</a>
-                    <a href="#" class="hover:text-white transition">이용약관</a>
+                <div class="flex space-x-4">
+                    <a href="http://www.megamedical.co.kr" target="_blank" class="hover:text-white transition">공식 홈페이지</a>
+                    <a href="https://shop.megamedical.co.kr/" target="_blank" class="hover:text-white transition">공식 쇼핑몰</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scroll adjustment for fixed navbar
+        // 스와이프 시 인디케이터(점) 업데이트 기능
+        function setupSlider(sliderId, indicatorId) {
+            const slider = document.getElementById(sliderId);
+            const indicators = document.getElementById(indicatorId).getElementsByClassName('indicator');
+
+            slider.addEventListener('scroll', () => {
+                const scrollLeft = slider.scrollLeft;
+                const width = slider.clientWidth;
+                const activeIndex = Math.round(scrollLeft / width);
+
+                for (let i = 0; i < indicators.length; i++) {
+                    indicators[i].classList.toggle('active', i === activeIndex);
+                }
+            });
+        }
+
+        // 초기화
+        window.onload = () => {
+            setupSlider('slider-290f', 'indicator-290f');
+            setupSlider('slider-navi', 'indicator-navi');
+        };
+
+        // 네비게이션 부드러운 스크롤
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                if(this.getAttribute('href').startsWith('#')) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if(target) {
-                        const navHeight = 64; 
-                        window.scrollTo({
-                            top: target.offsetTop - navHeight,
-                            behavior: 'smooth'
-                        });
-                    }
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 64,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
