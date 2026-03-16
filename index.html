@@ -81,6 +81,10 @@
             padding: 3rem 0;
             border-top: 1px solid #f1f5f9;
         }
+
+        .dynamic-title {
+            transition: all 0.2s ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
@@ -113,12 +117,11 @@
     <!-- Content Sections -->
     <main class="max-w-md mx-auto px-4 pb-32 space-y-12">
 
-        <!-- 1. NFT-290F -->
+        <!-- 1. NET Visual System (정정: NET-290F) -->
         <section id="doc-visual" class="section-card">
             <div class="text-center mb-6">
                 <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Visual System</span>
-                <h2 class="text-2xl font-extrabold text-slate-900 mt-1">NFT-290F</h2>
-                <!-- 직관적인 스와이프 로고 -->
+                <h2 id="title-290f" class="text-2xl font-extrabold text-slate-900 mt-1 dynamic-title">NET-290F</h2>
                 <div class="mt-3 flex justify-center">
                     <div class="swipe-badge flex items-center bg-brand-orange text-white px-4 py-1.5 rounded-full text-[11px] font-bold shadow-md">
                         <span class="mr-2">SWIPE TO VIEW</span>
@@ -127,9 +130,9 @@
                 </div>
             </div>
             <div class="swipe-container shadow-2xl border border-slate-100" id="slider-290f">
-                <div class="swipe-item"><img src="NFT-290F_1.jpg" alt="NFT-290F 1" onerror="this.src='https://via.placeholder.com/800x1100?text=NFT-290F_1.jpg'"></div>
-                <div class="swipe-item"><img src="NFT-290F_2.jpg" alt="NFT-290F 2" onerror="this.src='https://via.placeholder.com/800x1100?text=NFT-290F_2.jpg'"></div>
-                <div class="swipe-item"><img src="NFT-290F_3.jpg" alt="NFT-290F 3" onerror="this.src='https://via.placeholder.com/800x1100?text=NFT-290F_3.jpg'"></div>
+                <div class="swipe-item"><img src="NFT-290F_1.jpg" alt="NET-290F" onerror="this.src='https://via.placeholder.com/800x1100?text=NET-290F'"></div>
+                <div class="swipe-item"><img src="NFT-290F_2.jpg" alt="NET-290FD" onerror="this.src='https://via.placeholder.com/800x1100?text=NET-290FD+P2'"></div>
+                <div class="swipe-item"><img src="NFT-290F_3.jpg" alt="NET-290FD" onerror="this.src='https://via.placeholder.com/800x1100?text=NET-290FD+P3'"></div>
             </div>
             <div class="indicator-container" id="indicator-290f">
                 <div class="indicator active"></div><div class="indicator"></div><div class="indicator"></div>
@@ -153,20 +156,9 @@
             <div class="text-center mb-6">
                 <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Premium Series</span>
                 <h2 class="text-2xl font-extrabold text-slate-900 mt-1">ENT Workstations</h2>
-                <div class="mt-3 flex justify-center">
-                    <div class="swipe-badge flex items-center bg-brand-orange text-white px-4 py-1.5 rounded-full text-[11px] font-bold shadow-md">
-                        <span class="mr-2">SWIPE TO VIEW</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                    </div>
-                </div>
             </div>
-            <div class="swipe-container shadow-2xl border border-slate-100" id="slider-unit">
-                <div class="swipe-item"><img src="1500C 카탈로그.jpg" alt="1500C" onerror="this.src='https://via.placeholder.com/800x1100?text=1500C+Workstation'"></div>
-                <div class="swipe-item"><img src="unit_extra_1.jpg" alt="Extra Unit 1" onerror="this.src='https://via.placeholder.com/800x1100?text=Workstation+Detail+1'"></div>
-                <div class="swipe-item"><img src="unit_extra_2.jpg" alt="Extra Unit 2" onerror="this.src='https://via.placeholder.com/800x1100?text=Workstation+Detail+2'"></div>
-            </div>
-            <div class="indicator-container" id="indicator-unit">
-                <div class="indicator active"></div><div class="indicator"></div><div class="indicator"></div>
+            <div class="bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden">
+                <img src="1500C 카탈로그.jpg" alt="NET-1500 Series" class="w-full h-auto" onerror="this.src='https://via.placeholder.com/800x1100?text=NET-1500+Series'">
             </div>
         </section>
 
@@ -174,7 +166,7 @@
         <section id="doc-navi" class="section-card">
             <div class="text-center mb-6">
                 <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Surgical Materials</span>
-                <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Nasal Consumables</h2>
+                <h2 id="title-navi" class="text-2xl font-extrabold text-slate-900 mt-1 dynamic-title">나비밴드</h2>
                 <div class="mt-3 flex justify-center">
                     <div class="swipe-badge flex items-center bg-brand-orange text-white px-4 py-1.5 rounded-full text-[11px] font-bold shadow-md">
                         <span class="mr-2">SWIPE TO VIEW</span>
@@ -183,44 +175,48 @@
                 </div>
             </div>
             <div class="swipe-container shadow-2xl border border-slate-100" id="slider-navi">
-                <div class="swipe-item"><img src="navi_2.jpg" alt="Navifix Page" onerror="this.src='https://via.placeholder.com/800x1100?text=Navifix+Page'"></div>
-                <div class="swipe-item"><img src="navi_3.jpg" alt="Nepista Page" onerror="this.src='https://via.placeholder.com/800x1100?text=Nepista+Page'"></div>
-                <div class="swipe-item"><img src="navi_4.jpg" alt="Nasal Page 4" onerror="this.src='https://via.placeholder.com/800x1100?text=Nasal+Page+4'"></div>
-                <div class="swipe-item"><img src="navi_5.jpg" alt="Nasal Page 5" onerror="this.src='https://via.placeholder.com/800x1100?text=Nasal+Page+5'"></div>
-                <div class="swipe-item"><img src="navi_6.jpg" alt="Nasal Page 6" onerror="this.src='https://via.placeholder.com/800x1100?text=Nasal+Page+6'"></div>
-                <div class="swipe-item"><img src="navi_7.jpg" alt="Nasal Page 7" onerror="this.src='https://via.placeholder.com/800x1100?text=Nasal+Page+7'"></div>
+                <div class="swipe-item"><img src="navi_2.jpg" alt="나비밴드" onerror="this.src='https://via.placeholder.com/800x1100?text=나비밴드'"></div>
+                <div class="swipe-item"><img src="navi_3.jpg" alt="나잘스프린트" onerror="this.src='https://via.placeholder.com/800x1100?text=나잘스프린트+P1'"></div>
+                <div class="swipe-item"><img src="navi_4.jpg" alt="나잘스프린트" onerror="this.src='https://via.placeholder.com/800x1100?text=나잘스프린트+P2'"></div>
+                <div class="swipe-item"><img src="navi_5.jpg" alt="나비픽스" onerror="this.src='https://via.placeholder.com/800x1100?text=나비픽스'"></div>
+                <div class="swipe-item"><img src="navi_6.jpg" alt="네피스타" onerror="this.src='https://via.placeholder.com/800x1100?text=네피스타'"></div>
+                <div class="swipe-item"><img src="navi_7.jpg" alt="나잘드레싱" onerror="this.src='https://via.placeholder.com/800x1100?text=나잘드레싱'"></div>
             </div>
             <div class="indicator-container" id="indicator-navi">
                 <div class="indicator active"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div>
             </div>
         </section>
 
-        <!-- 5. Respiratory -->
-        <section id="doc-resp" class="section-card">
-            <div class="text-center mb-8">
+        <!-- 5. O2RESPY (독립 섹션 분리) -->
+        <section id="doc-o2respy" class="section-card">
+            <div class="text-center mb-6">
                 <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Respiratory Care</span>
-                <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Respiratory Line-up</h2>
+                <h2 class="text-2xl font-extrabold text-slate-900 mt-1">O2RESPY</h2>
             </div>
-            
-            <div class="space-y-12">
-                <div class="text-center">
-                    <h3 class="text-sm font-bold text-slate-700 mb-3 bg-slate-100 inline-block px-3 py-1 rounded">O2RESPY</h3>
-                    <div class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
-                        <img src="O2RESPY-1.jpg" alt="O2RESPY" class="w-full h-auto" onerror="this.src='https://via.placeholder.com/800x1100?text=O2RESPY-1.jpg'">
-                    </div>
-                </div>
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
+                <img src="O2RESPY-1.jpg" alt="O2RESPY" class="w-full h-auto" onerror="this.src='https://via.placeholder.com/800x1100?text=O2RESPY-1.jpg'">
+            </div>
+        </section>
 
-                <div class="text-center">
-                    <h3 class="text-sm font-bold text-slate-700 mb-3 bg-slate-100 inline-block px-3 py-1 rounded">RS-series</h3>
-                    <div class="swipe-container shadow-2xl border border-slate-100" id="slider-rs">
-                        <div class="swipe-item"><img src="RS-series-1.jpg" alt="RS 1" onerror="this.src='https://via.placeholder.com/800x1100?text=RS-series-1.jpg'"></div>
-                        <div class="swipe-item"><img src="RS-series-2.jpg" alt="RS 2" onerror="this.src='https://via.placeholder.com/800x1100?text=RS-series-2.jpg'"></div>
-                        <div class="swipe-item"><img src="RS-series-3.jpg" alt="RS 3" onerror="this.src='https://via.placeholder.com/800x1100?text=RS-series-3.jpg'"></div>
-                    </div>
-                    <div class="indicator-container" id="indicator-rs">
-                        <div class="indicator active"></div><div class="indicator"></div><div class="indicator"></div>
+        <!-- 6. RS-series (독립 섹션 분리 및 서식 통일) -->
+        <section id="doc-rs" class="section-card">
+            <div class="text-center mb-6">
+                <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Respiratory Care</span>
+                <h2 id="title-rs" class="text-2xl font-extrabold text-slate-900 mt-1 dynamic-title">RS-1000</h2>
+                <div class="mt-3 flex justify-center">
+                    <div class="swipe-badge flex items-center bg-brand-orange text-white px-4 py-1.5 rounded-full text-[11px] font-bold shadow-md">
+                        <span class="mr-2">SWIPE TO VIEW</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                     </div>
                 </div>
+            </div>
+            <div class="swipe-container shadow-2xl border border-slate-100" id="slider-rs">
+                <div class="swipe-item"><img src="RS-series-1.jpg" alt="RS-1000" onerror="this.src='https://via.placeholder.com/800x1100?text=RS-1000'"></div>
+                <div class="swipe-item"><img src="RS-series-2.jpg" alt="RS-2100" onerror="this.src='https://via.placeholder.com/800x1100?text=RS-2100'"></div>
+                <div class="swipe-item"><img src="RS-series-3.jpg" alt="RS-3000" onerror="this.src='https://via.placeholder.com/800x1100?text=RS-3000'"></div>
+            </div>
+            <div class="indicator-container" id="indicator-rs">
+                <div class="indicator active"></div><div class="indicator"></div><div class="indicator"></div>
             </div>
         </section>
 
@@ -231,7 +227,6 @@
         <div class="text-2xl font-black mb-6 italic tracking-tighter">
             <span class="text-brand-orange">MEGA</span> MEDICAL
         </div>
-        <!-- 실제 주소로 수정 -->
         <p class="text-slate-400 text-[11px] mb-8 leading-relaxed">
             강원특별자치도 원주시 문막읍 동화공단로 110-1<br>
             대표번호: 1588-4493 | F. 02-3661-0120<br>
@@ -244,31 +239,53 @@
     </footer>
 
     <script>
+        // 페이지별 제목 데이터
+        const pageTitles = {
+            'slider-290f': ['NET-290F', 'NET-290FD', 'NET-290FD'],
+            'slider-navi': ['나비밴드', '나잘스프린트', '나잘스프린트', '나비픽스', '네피스타', '나잘드레싱'],
+            'slider-rs': ['RS-1000', 'RS-2100', 'RS-3000']
+        };
+
+        const titleElementIds = {
+            'slider-290f': 'title-290f',
+            'slider-navi': 'title-navi',
+            'slider-rs': 'title-rs'
+        };
+
         function initSlider(sliderId, indicatorId) {
             const slider = document.getElementById(sliderId);
             if(!slider) return;
             const container = document.getElementById(indicatorId);
             const indicators = container.querySelectorAll('.indicator');
+            const titleElement = document.getElementById(titleElementIds[sliderId]);
 
-            const updateDots = () => {
-                const width = slider.offsetWidth;
+            const updateState = () => {
+                const width = slider.clientWidth;
                 const scrollLeft = slider.scrollLeft;
                 const index = Math.round(scrollLeft / width);
                 
+                // 인디케이터 활성화 업데이트
                 indicators.forEach((dot, i) => {
                     dot.classList.toggle('active', i === index);
                 });
+
+                // 제목 업데이트
+                if (titleElement && pageTitles[sliderId]) {
+                    titleElement.innerText = pageTitles[sliderId][index] || pageTitles[sliderId][0];
+                }
             };
 
-            slider.addEventListener('scroll', updateDots);
-            window.addEventListener('resize', updateDots);
+            slider.addEventListener('scroll', updateState);
+            window.addEventListener('resize', updateState);
+            
+            // 초기 상태 실행
+            updateState();
         }
 
         window.onload = () => {
             initSlider('slider-290f', 'indicator-290f');
-            initSlider('slider-unit', 'indicator-unit');
-            initSlider('slider-rs', 'indicator-rs');
             initSlider('slider-navi', 'indicator-navi');
+            initSlider('slider-rs', 'indicator-rs');
         };
     </script>
 </body>
