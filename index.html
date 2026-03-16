@@ -19,15 +19,14 @@
         .bg-brand-orange { background-color: var(--brand-orange); }
         .hover-bg-brand-orange:hover { background-color: var(--brand-orange-dark); }
 
-        /* 인스타그램 스타일 스와이프 컨테이너 개선 */
+        /* 스와이프 컨테이너 */
         .swipe-container {
             display: flex;
             overflow-x: auto;
-            /* 딱딱 끊기게 설정 */
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
-            border-radius: 12px;
+            border-radius: 16px;
             background: #ffffff;
             gap: 0;
         }
@@ -35,7 +34,6 @@
         
         .swipe-item {
             flex: 0 0 100%;
-            /* 스냅 지점 설정 */
             scroll-snap-align: center;
             scroll-snap-stop: always;
             display: flex;
@@ -49,7 +47,7 @@
             display: block;
         }
 
-        /* 페이지네이션 인디케이터 */
+        /* 점 인디케이터 */
         .indicator-container {
             display: flex;
             justify-content: center;
@@ -70,13 +68,19 @@
             border-radius: 10px;
         }
 
-        .section-card {
-            padding: 2.5rem 0;
-            border-top: 1px solid #f1f5f9;
+        /* 스와이프 안내 버튼/배지 애니메이션 */
+        @keyframes hand-swipe {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+        .swipe-badge {
+            animation: hand-swipe 1.5s infinite;
         }
 
-        .hover-lift { transition: all 0.3s ease; }
-        .hover-lift:hover { transform: translateY(-4px); }
+        .section-card {
+            padding: 3rem 0;
+            border-top: 1px solid #f1f5f9;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
@@ -89,112 +93,134 @@
                     <span class="text-brand-orange">MEGA</span> <span class="text-slate-800">MEDICAL</span>
                 </span>
             </div>
-            <div class="hidden lg:flex space-x-6 text-sm font-bold">
-                <a href="#intro" class="text-slate-600 hover:text-brand-orange transition">KIMES 2026</a>
-                <a href="#doc1" class="text-slate-600 hover:text-brand-orange transition">NFT-290F</a>
-                <a href="#doc2" class="text-slate-600 hover:text-brand-orange transition">비강소모품</a>
-                <a href="#doc3" class="text-slate-600 hover:text-brand-orange transition">이관질환</a>
-            </div>
-            <a href="http://www.megamedical.co.kr" target="_blank" class="bg-brand-orange text-white px-4 py-2 rounded-full text-[11px] font-bold hover-bg-brand-orange shadow-md transition-all active:scale-95">홈페이지</a>
+            <a href="http://www.megamedical.co.kr" target="_blank" class="bg-brand-orange text-white px-4 py-2 rounded-full text-[11px] font-bold shadow-md transition-all active:scale-95">공식 사이트</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <header id="intro" class="pt-32 pb-16 px-6 text-center bg-white border-b border-slate-100">
         <div class="inline-block px-3 py-1 mb-4 text-[10px] font-bold tracking-widest text-white bg-brand-orange rounded uppercase">
-            2026 Exhibition
+            2026 KIMES Showcase
         </div>
-        <h1 class="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">
+        <h1 class="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight leading-tight">
             Digital <span class="text-brand-orange">Catalog</span>
         </h1>
         <p class="text-slate-500 text-sm max-w-xs mx-auto mb-8 leading-relaxed">
-            메가메디칼의 혁신 기술력을<br>모바일 카탈로그로 만나보세요.
+            메가메디칼의 2026 핵심 라인업을<br>스와이프로 더 편리하게 확인하세요.
         </p>
-        <a href="#doc1" class="inline-block bg-brand-orange text-white px-10 py-4 rounded-full text-lg font-bold shadow-lg hover-lift">
-            카탈로그 시작
-        </a>
     </header>
 
     <!-- Content Sections -->
-    <main class="max-w-md mx-auto px-4 pb-32 space-y-20">
+    <main class="max-w-md mx-auto px-4 pb-32 space-y-12">
 
-        <!-- 1. NFT-290F (파일명 수정 및 스냅 강화) -->
-        <section id="doc1" class="section-card">
-            <div class="flex items-end justify-between mb-4">
-                <div>
-                    <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Visual System</span>
-                    <h2 class="text-2xl font-extrabold text-slate-900">NFT-290F</h2>
-                </div>
-                <div class="flex items-center text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-full">
-                    <span class="mr-1">SWIPE</span>
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="9 5l7 7-7 7"></path></svg>
+        <!-- 1. NFT-290F -->
+        <section id="doc-visual" class="section-card">
+            <div class="text-center mb-6">
+                <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Visual System</span>
+                <h2 class="text-2xl font-extrabold text-slate-900 mt-1">NFT-290F</h2>
+                <!-- 직관적인 스와이프 로고 -->
+                <div class="mt-3 flex justify-center">
+                    <div class="swipe-badge flex items-center bg-brand-orange text-white px-4 py-1.5 rounded-full text-[11px] font-bold shadow-md">
+                        <span class="mr-2">SWIPE TO VIEW</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </div>
                 </div>
             </div>
-            
-            <div class="swipe-container shadow-xl border border-slate-100" id="slider-290f">
+            <div class="swipe-container shadow-2xl border border-slate-100" id="slider-290f">
                 <div class="swipe-item"><img src="NFT-290F_1.jpg" alt="NFT-290F 1" onerror="this.src='https://via.placeholder.com/800x1100?text=NFT-290F_1.jpg'"></div>
                 <div class="swipe-item"><img src="NFT-290F_2.jpg" alt="NFT-290F 2" onerror="this.src='https://via.placeholder.com/800x1100?text=NFT-290F_2.jpg'"></div>
                 <div class="swipe-item"><img src="NFT-290F_3.jpg" alt="NFT-290F 3" onerror="this.src='https://via.placeholder.com/800x1100?text=NFT-290F_3.jpg'"></div>
             </div>
             <div class="indicator-container" id="indicator-290f">
-                <div class="indicator active"></div>
-                <div class="indicator"></div>
-                <div class="indicator"></div>
+                <div class="indicator active"></div><div class="indicator"></div><div class="indicator"></div>
             </div>
         </section>
 
-        <!-- 2. 비강 소모품 (7장 스와이프) -->
-        <section id="doc2" class="section-card">
-            <div class="flex items-end justify-between mb-4">
-                <div>
-                    <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Surgical Materials</span>
-                    <h2 class="text-2xl font-extrabold text-slate-900">비강 소모품 5종</h2>
-                </div>
-                <div class="flex items-center text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-full">
-                    <span class="mr-1">SWIPE</span>
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="9 5l7 7-7 7"></path></svg>
+        <!-- 2. ETD Solution -->
+        <section id="doc-etd" class="section-card">
+            <div class="text-center mb-6">
+                <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Treatment Solution</span>
+                <h2 class="text-2xl font-extrabold text-slate-900 mt-1">ETD Solution</h2>
+                <p class="text-[10px] text-slate-400 mt-2 italic">*첫 페이지(표지)를 제외한 상세 내용입니다.</p>
+            </div>
+            <div class="bg-white rounded-2xl overflow-hidden shadow-2xl border border-slate-100">
+                <iframe src="이관 질환 종합 카탈로그 제작(인쇄 파일).pdf#toolbar=0&view=Fit&page=2" class="w-full h-[650px]" title="ETD Solution Catalog"></iframe>
+            </div>
+        </section>
+
+        <!-- 3. ENT Workstations -->
+        <section id="doc-unit" class="section-card">
+            <div class="text-center mb-6">
+                <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Premium Series</span>
+                <h2 class="text-2xl font-extrabold text-slate-900 mt-1">ENT Workstations</h2>
+                <div class="mt-3 flex justify-center">
+                    <div class="swipe-badge flex items-center bg-brand-orange text-white px-4 py-1.5 rounded-full text-[11px] font-bold shadow-md">
+                        <span class="mr-2">SWIPE TO VIEW</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </div>
                 </div>
             </div>
-            
-            <div class="swipe-container shadow-xl border border-slate-100" id="slider-navi">
-                <div class="swipe-item"><img src="navi_1.jpg" alt="Navi 1" onerror="this.src='https://via.placeholder.com/800x1100?text=navi_1.jpg'"></div>
-                <div class="swipe-item"><img src="navi_2.jpg" alt="Navi 2" onerror="this.src='https://via.placeholder.com/800x1100?text=navi_2.jpg'"></div>
-                <div class="swipe-item"><img src="navi_3.jpg" alt="Navi 3" onerror="this.src='https://via.placeholder.com/800x1100?text=navi_3.jpg'"></div>
-                <div class="swipe-item"><img src="navi_4.jpg" alt="Navi 4" onerror="this.src='https://via.placeholder.com/800x1100?text=navi_4.jpg'"></div>
-                <div class="swipe-item"><img src="navi_5.jpg" alt="Navi 5" onerror="this.src='https://via.placeholder.com/800x1100?text=navi_5.jpg'"></div>
-                <div class="swipe-item"><img src="navi_6.jpg" alt="Navi 6" onerror="this.src='https://via.placeholder.com/800x1100?text=navi_6.jpg'"></div>
-                <div class="swipe-item"><img src="navi_7.jpg" alt="Navi 7" onerror="this.src='https://via.placeholder.com/800x1100?text=navi_7.jpg'"></div>
+            <div class="swipe-container shadow-2xl border border-slate-100" id="slider-unit">
+                <div class="swipe-item"><img src="1500C 카탈로그.jpg" alt="1500C" onerror="this.src='https://via.placeholder.com/800x1100?text=1500C+Workstation'"></div>
+                <div class="swipe-item"><img src="unit_extra_1.jpg" alt="Extra Unit 1" onerror="this.src='https://via.placeholder.com/800x1100?text=Workstation+Detail+1'"></div>
+                <div class="swipe-item"><img src="unit_extra_2.jpg" alt="Extra Unit 2" onerror="this.src='https://via.placeholder.com/800x1100?text=Workstation+Detail+2'"></div>
+            </div>
+            <div class="indicator-container" id="indicator-unit">
+                <div class="indicator active"></div><div class="indicator"></div><div class="indicator"></div>
+            </div>
+        </section>
+
+        <!-- 4. Nasal Consumables -->
+        <section id="doc-navi" class="section-card">
+            <div class="text-center mb-6">
+                <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Surgical Materials</span>
+                <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Nasal Consumables</h2>
+                <div class="mt-3 flex justify-center">
+                    <div class="swipe-badge flex items-center bg-brand-orange text-white px-4 py-1.5 rounded-full text-[11px] font-bold shadow-md">
+                        <span class="mr-2">SWIPE TO VIEW</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="swipe-container shadow-2xl border border-slate-100" id="slider-navi">
+                <div class="swipe-item"><img src="navi_2.jpg" alt="Navifix Page" onerror="this.src='https://via.placeholder.com/800x1100?text=Navifix+Page'"></div>
+                <div class="swipe-item"><img src="navi_3.jpg" alt="Nepista Page" onerror="this.src='https://via.placeholder.com/800x1100?text=Nepista+Page'"></div>
+                <div class="swipe-item"><img src="navi_4.jpg" alt="Nasal Page 4" onerror="this.src='https://via.placeholder.com/800x1100?text=Nasal+Page+4'"></div>
+                <div class="swipe-item"><img src="navi_5.jpg" alt="Nasal Page 5" onerror="this.src='https://via.placeholder.com/800x1100?text=Nasal+Page+5'"></div>
+                <div class="swipe-item"><img src="navi_6.jpg" alt="Nasal Page 6" onerror="this.src='https://via.placeholder.com/800x1100?text=Nasal+Page+6'"></div>
+                <div class="swipe-item"><img src="navi_7.jpg" alt="Nasal Page 7" onerror="this.src='https://via.placeholder.com/800x1100?text=Nasal+Page+7'"></div>
             </div>
             <div class="indicator-container" id="indicator-navi">
-                <div class="indicator active"></div>
-                <div class="indicator"></div>
-                <div class="indicator"></div>
-                <div class="indicator"></div>
-                <div class="indicator"></div>
-                <div class="indicator"></div>
-                <div class="indicator"></div>
+                <div class="indicator active"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div>
             </div>
         </section>
 
-        <!-- 3. 이관질환 -->
-        <section id="doc3" class="section-card">
-            <div class="mb-4">
-                <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Treatment Solutions</span>
-                <h2 class="text-2xl font-extrabold text-slate-900">이관질환 솔루션</h2>
+        <!-- 5. Respiratory -->
+        <section id="doc-resp" class="section-card">
+            <div class="text-center mb-8">
+                <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Respiratory Care</span>
+                <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Respiratory Line-up</h2>
             </div>
-            <div class="bg-white rounded-xl overflow-hidden shadow-xl border border-slate-100">
-                <iframe src="이관 질환 종합 카탈로그 제작(인쇄 파일).pdf#toolbar=0" class="w-full h-[450px]" title="이관질환 Catalog"></iframe>
-            </div>
-        </section>
+            
+            <div class="space-y-12">
+                <div class="text-center">
+                    <h3 class="text-sm font-bold text-slate-700 mb-3 bg-slate-100 inline-block px-3 py-1 rounded">O2RESPY</h3>
+                    <div class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
+                        <img src="O2RESPY-1.jpg" alt="O2RESPY" class="w-full h-auto" onerror="this.src='https://via.placeholder.com/800x1100?text=O2RESPY-1.jpg'">
+                    </div>
+                </div>
 
-        <!-- 4. 1500C 유닛 -->
-        <section id="doc4" class="section-card">
-            <div class="mb-4">
-                <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">ENT Unit</span>
-                <h2 class="text-2xl font-extrabold text-slate-900">1500C Premium</h2>
-            </div>
-            <div class="bg-white rounded-xl overflow-hidden shadow-xl border border-slate-100 p-1">
-                <img src="1500C 카탈로그.jpg" alt="1500C" class="w-full h-auto rounded-lg" onerror="this.src='https://via.placeholder.com/800x1100?text=1500C.jpg'">
+                <div class="text-center">
+                    <h3 class="text-sm font-bold text-slate-700 mb-3 bg-slate-100 inline-block px-3 py-1 rounded">RS-series</h3>
+                    <div class="swipe-container shadow-2xl border border-slate-100" id="slider-rs">
+                        <div class="swipe-item"><img src="RS-series-1.jpg" alt="RS 1" onerror="this.src='https://via.placeholder.com/800x1100?text=RS-series-1.jpg'"></div>
+                        <div class="swipe-item"><img src="RS-series-2.jpg" alt="RS 2" onerror="this.src='https://via.placeholder.com/800x1100?text=RS-series-2.jpg'"></div>
+                        <div class="swipe-item"><img src="RS-series-3.jpg" alt="RS 3" onerror="this.src='https://via.placeholder.com/800x1100?text=RS-series-3.jpg'"></div>
+                    </div>
+                    <div class="indicator-container" id="indicator-rs">
+                        <div class="indicator active"></div><div class="indicator"></div><div class="indicator"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -202,67 +228,48 @@
 
     <!-- Footer -->
     <footer class="bg-[#111827] text-white pt-12 pb-10 px-6 text-center">
-        <div class="text-2xl font-black mb-6 italic">
+        <div class="text-2xl font-black mb-6 italic tracking-tighter">
             <span class="text-brand-orange">MEGA</span> MEDICAL
         </div>
+        <!-- 실제 주소로 수정 -->
         <p class="text-slate-400 text-[11px] mb-8 leading-relaxed">
-            서울특별시 강서구 허준로 217 가양비즈메트로 1차 901호<br>
-            T. 1588-4493 | © MEGA MEDICAL
+            강원특별자치도 원주시 문막읍 동화공단로 110-1<br>
+            대표번호: 1588-4493 | F. 02-3661-0120<br>
+            © 2026 MEGA MEDICAL Co., Ltd.
         </p>
         <div class="flex justify-center space-x-4">
-            <a href="http://www.megamedical.co.kr" class="text-xs text-slate-300 border border-slate-700 px-4 py-2 rounded-full">홈페이지</a>
-            <a href="https://shop.megamedical.co.kr/" class="text-xs text-slate-300 border border-slate-700 px-4 py-2 rounded-full">쇼핑몰</a>
+            <a href="http://www.megamedical.co.kr" target="_blank" class="text-xs text-slate-300 border border-slate-700 px-5 py-2 rounded-full hover:border-brand-orange transition">홈페이지</a>
+            <a href="https://shop.megamedical.co.kr/" target="_blank" class="text-xs text-slate-300 border border-slate-700 px-5 py-2 rounded-full hover:border-brand-orange transition">공식쇼핑몰</a>
         </div>
     </footer>
 
     <script>
-        /**
-         * 슬라이더 인디케이터 연동 로직
-         */
         function initSlider(sliderId, indicatorId) {
             const slider = document.getElementById(sliderId);
+            if(!slider) return;
             const container = document.getElementById(indicatorId);
             const indicators = container.querySelectorAll('.indicator');
 
             const updateDots = () => {
                 const width = slider.offsetWidth;
                 const scrollLeft = slider.scrollLeft;
-                // 현재 인덱스 계산 (반올림으로 정확도 향상)
                 const index = Math.round(scrollLeft / width);
                 
                 indicators.forEach((dot, i) => {
-                    if (i === index) {
-                        dot.classList.add('active');
-                    } else {
-                        dot.classList.remove('active');
-                    }
+                    dot.classList.toggle('active', i === index);
                 });
             };
 
-            // 스크롤 이벤트 발생 시 업데이트
             slider.addEventListener('scroll', updateDots);
-            // 윈도우 리사이즈 대응
             window.addEventListener('resize', updateDots);
         }
 
         window.onload = () => {
             initSlider('slider-290f', 'indicator-290f');
+            initSlider('slider-unit', 'indicator-unit');
+            initSlider('slider-rs', 'indicator-rs');
             initSlider('slider-navi', 'indicator-navi');
         };
-
-        // 네비게이션 부드러운 이동 (Fixed Header 고려)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if(target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
     </script>
 </body>
 </html>
