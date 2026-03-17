@@ -139,7 +139,7 @@
             </div>
         </section>
 
-        <!-- 2. ETD Solution (이미지 스와이프 형식으로 교체) -->
+        <!-- 2. ETD Solution -->
         <section id="doc-etd" class="section-card">
             <div class="text-center mb-6">
                 <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Treatment Solution</span>
@@ -152,12 +152,12 @@
                 </div>
             </div>
             <div class="swipe-container shadow-2xl border border-slate-100" id="slider-etd">
-                <div class="swipe-item"><img src="ETD_bleed1.jpg" alt="JK-05AD" onerror="this.src='https://via.placeholder.com/800x1100?text=JK-05AD+P1'"></div>
-                <div class="swipe-item"><img src="ETD_bleed2.jpg" alt="JK-05AD" onerror="this.src='https://via.placeholder.com/800x1100?text=JK-05AD+P2'"></div>
-                <div class="swipe-item"><img src="ETD_bleed3.jpg" alt="Navilloon-e" onerror="this.src='https://via.placeholder.com/800x1100?text=Navilloon-e+P1'"></div>
-                <div class="swipe-item"><img src="ETD_bleed4.jpg" alt="Navilloon-e" onerror="this.src='https://via.placeholder.com/800x1100?text=Navilloon-e+P2'"></div>
-                <div class="swipe-item"><img src="ETD_bleed5.jpg" alt="Eustacure" onerror="this.src='https://via.placeholder.com/800x1100?text=Eustacure+P1'"></div>
-                <div class="swipe-item"><img src="ETD_bleed6.jpg" alt="Eustacure" onerror="this.src='https://via.placeholder.com/800x1100?text=Eustacure+P2'"></div>
+                <div class="swipe-item"><img src="ETD_bleed1.jpg" alt="JK-05AD P1" onerror="this.src='https://via.placeholder.com/800x1100?text=ETD_bleed1.jpg+Missing'"></div>
+                <div class="swipe-item"><img src="ETD_bleed2.jpg" alt="JK-05AD P2" onerror="this.src='https://via.placeholder.com/800x1100?text=ETD_bleed2.jpg+Missing'"></div>
+                <div class="swipe-item"><img src="ETD_bleed3.jpg" alt="Navilloon-e P1" onerror="this.src='https://via.placeholder.com/800x1100?text=ETD_bleed3.jpg+Missing'"></div>
+                <div class="swipe-item"><img src="ETD_bleed4.jpg" alt="Navilloon-e P2" onerror="this.src='https://via.placeholder.com/800x1100?text=ETD_bleed4.jpg+Missing'"></div>
+                <div class="swipe-item"><img src="ETD_bleed5.jpg" alt="Eustacure P1" onerror="this.src='https://via.placeholder.com/800x1100?text=ETD_bleed5.jpg+Missing'"></div>
+                <div class="swipe-item"><img src="ETD_bleed6.jpg" alt="Eustacure P2" onerror="this.src='https://via.placeholder.com/800x1100?text=ETD_bleed6.jpg+Missing'"></div>
             </div>
             <div class="indicator-container" id="indicator-etd">
                 <div class="indicator active"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div>
@@ -187,7 +187,7 @@
             </div>
         </section>
 
-        <!-- 4. Nasal Consumables -->
+        <!-- 4. Nasal Consumables (2P 추가됨) -->
         <section id="doc-navi" class="section-card">
             <div class="text-center mb-6">
                 <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Surgical Materials</span>
@@ -206,9 +206,13 @@
                 <div class="swipe-item"><img src="navi_5.jpg" alt="Navifix" onerror="this.src='https://via.placeholder.com/800x1100?text=Navifix'"></div>
                 <div class="swipe-item"><img src="navi_6.jpg" alt="Nepista" onerror="this.src='https://via.placeholder.com/800x1100?text=Nepista'"></div>
                 <div class="swipe-item"><img src="navi_7.jpg" alt="Nasal Dressing" onerror="this.src='https://via.placeholder.com/800x1100?text=Nasal+Dressing'"></div>
+                <!-- 추가분 2P -->
+                <div class="swipe-item"><img src="navi_8.jpg" alt="Nosepiece P1" onerror="this.src='https://via.placeholder.com/800x1100?text=Nosepiece+P1'"></div>
+                <div class="swipe-item"><img src="navi_9.jpg" alt="Nosepiece P2" onerror="this.src='https://via.placeholder.com/800x1100?text=Nosepiece+P2'"></div>
             </div>
             <div class="indicator-container" id="indicator-navi">
-                <div class="indicator active"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div>
+                <!-- 자바스크립트에서 8개의 점이 자동 활성화됩니다 -->
+                <div class="indicator active"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div>
             </div>
         </section>
 
@@ -273,7 +277,11 @@
                 '이학진료용기구 (Eustacure)', '이학진료용기구 (Eustacure)'
             ],
             'slider-unit': ['NET-1500 (ENT CHAIR)', 'NET-600K', 'NET-700', 'NET-1100'],
-            'slider-navi': ['Naviband', 'Nasal Splint', 'Nasal Splint', 'Navifix', 'Nepista', 'Nasal Dressing'],
+            'slider-navi': [
+                'Naviband', 'Nasal Splint', 'Nasal Splint', 
+                'Navifix', 'Nepista', 'Nasal Dressing', 
+                'Nosepiece', 'Nosepiece'
+            ],
             'slider-rs': ['RS-1000', 'RS-2100', 'RS-3000']
         };
 
@@ -308,7 +316,7 @@
                 }
             };
 
-            slider.addEventListener('scroll', updateState);
+            slider.addEventListener('scroll', updateState, {passive: true});
             window.addEventListener('resize', updateState);
             
             // 초기 상태 실행
