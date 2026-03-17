@@ -277,8 +277,9 @@
             'slider-etd': ['이관기능검사기 (JK-05AD)', '이관기능검사기 (JK-05AD)', '이관풍선카테터 (Navilloon-e)', '이관풍선카테터 (Navilloon-e)', '이학진료용기구 (Eustacure)', '이학진료용기구 (Eustacure)'],
             'slider-unit': ['NET-1500 (ENT CHAIR)', 'NET-600K', 'NET-700', 'NET-1100'],
             'slider-navi': ['Naviband', 'Nasal Splint', 'Nasal Splint', 'Navifix', 'Nepista', 'Nasal Dressing', 'Nosepiece', 'Nosepiece'],
-            'slider-naviol': ['NAVIOL P1', 'NAVIOL P2', 'NAVIOL P3', 'NAVIOL P4'],
-            'slider-debrider': ['Navilader P1', 'Navilader P2', 'Navilader P3', 'Navilader P4'],
+            // NAVIOL과 Navilader의 타이틀을 고정 명칭으로 수정
+            'slider-naviol': ['NAVIOL', 'NAVIOL', 'NAVIOL', 'NAVIOL'],
+            'slider-debrider': ['Navilader', 'Navilader', 'Navilader', 'Navilader'],
             'slider-rs': ['RS-1000', 'RS-2100', 'RS-3000']
         };
 
@@ -324,7 +325,6 @@
         window.addEventListener('scroll', () => {
             const sections = ['doc-visual', 'doc-etd', 'doc-unit', 'doc-navi', 'doc-naviol', 'doc-debrider', 'doc-o2respy', 'doc-rs'];
             const tabs = document.querySelectorAll('.nav-tab');
-            const viewportCenter = window.innerHeight / 2.5; // 약간 상단에서 감지하도록 조정
             
             let closestSection = sections[0];
             let minDistance = Infinity;
@@ -333,7 +333,7 @@
                 const el = document.getElementById(id);
                 if (el) {
                     const rect = el.getBoundingClientRect();
-                    // 섹션의 상단 거리를 기준으로 가장 가까운 것 선택
+                    // 섹션의 상단 거리를 기준으로 가장 가까운 것 선택 (헤더 높이 고려)
                     const distance = Math.abs(rect.top - 110);
                     
                     if (distance < minDistance) {
