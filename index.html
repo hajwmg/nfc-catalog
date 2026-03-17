@@ -139,19 +139,32 @@
             </div>
         </section>
 
-        <!-- 2. ETD Solution -->
+        <!-- 2. ETD Solution (이미지 스와이프 형식으로 교체) -->
         <section id="doc-etd" class="section-card">
             <div class="text-center mb-6">
                 <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Treatment Solution</span>
-                <h2 class="text-2xl font-extrabold text-slate-900 mt-1">ETD Solution</h2>
-                <p class="text-[10px] text-slate-400 mt-2 italic">*첫 페이지(표지)를 제외한 상세 내용입니다.</p>
+                <h2 id="title-etd" class="text-2xl font-extrabold text-slate-900 mt-1 dynamic-title">이관기능검사기 (JK-05AD)</h2>
+                <div class="mt-3 flex justify-center">
+                    <div class="swipe-badge flex items-center bg-brand-orange text-white px-4 py-1.5 rounded-full text-[11px] font-bold shadow-md">
+                        <span class="mr-2">SWIPE TO VIEW</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </div>
+                </div>
             </div>
-            <div class="bg-white rounded-2xl overflow-hidden shadow-2xl border border-slate-100">
-                <iframe src="이관 질환 종합 카탈로그 제작(인쇄 파일).pdf#toolbar=0&view=Fit&page=2" class="w-full h-[650px]" title="ETD Solution Catalog"></iframe>
+            <div class="swipe-container shadow-2xl border border-slate-100" id="slider-etd">
+                <div class="swipe-item"><img src="ETD_bleed1.jpg" alt="JK-05AD" onerror="this.src='https://via.placeholder.com/800x1100?text=JK-05AD+P1'"></div>
+                <div class="swipe-item"><img src="ETD_bleed2.jpg" alt="JK-05AD" onerror="this.src='https://via.placeholder.com/800x1100?text=JK-05AD+P2'"></div>
+                <div class="swipe-item"><img src="ETD_bleed3.jpg" alt="Navilloon-e" onerror="this.src='https://via.placeholder.com/800x1100?text=Navilloon-e+P1'"></div>
+                <div class="swipe-item"><img src="ETD_bleed4.jpg" alt="Navilloon-e" onerror="this.src='https://via.placeholder.com/800x1100?text=Navilloon-e+P2'"></div>
+                <div class="swipe-item"><img src="ETD_bleed5.jpg" alt="Eustacure" onerror="this.src='https://via.placeholder.com/800x1100?text=Eustacure+P1'"></div>
+                <div class="swipe-item"><img src="ETD_bleed6.jpg" alt="Eustacure" onerror="this.src='https://via.placeholder.com/800x1100?text=Eustacure+P2'"></div>
+            </div>
+            <div class="indicator-container" id="indicator-etd">
+                <div class="indicator active"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div><div class="indicator"></div>
             </div>
         </section>
 
-        <!-- 3. ENT Workstations (복구 및 모델명 업데이트) -->
+        <!-- 3. ENT Workstations -->
         <section id="doc-unit" class="section-card">
             <div class="text-center mb-6">
                 <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Premium Series</span>
@@ -174,7 +187,7 @@
             </div>
         </section>
 
-        <!-- 4. Nasal Consumables (영문명 업데이트) -->
+        <!-- 4. Nasal Consumables -->
         <section id="doc-navi" class="section-card">
             <div class="text-center mb-6">
                 <span class="text-brand-orange font-bold text-[10px] tracking-widest uppercase">Surgical Materials</span>
@@ -254,6 +267,11 @@
         // 페이지별 제목 데이터
         const pageTitles = {
             'slider-290f': ['NET-290F', 'NET-290FD', 'NET-290FD'],
+            'slider-etd': [
+                '이관기능검사기 (JK-05AD)', '이관기능검사기 (JK-05AD)', 
+                '이관풍선카테터 (Navilloon-e)', '이관풍선카테터 (Navilloon-e)', 
+                '이학진료용기구 (Eustacure)', '이학진료용기구 (Eustacure)'
+            ],
             'slider-unit': ['NET-1500 (ENT CHAIR)', 'NET-600K', 'NET-700', 'NET-1100'],
             'slider-navi': ['Naviband', 'Nasal Splint', 'Nasal Splint', 'Navifix', 'Nepista', 'Nasal Dressing'],
             'slider-rs': ['RS-1000', 'RS-2100', 'RS-3000']
@@ -261,6 +279,7 @@
 
         const titleElementIds = {
             'slider-290f': 'title-290f',
+            'slider-etd': 'title-etd',
             'slider-unit': 'title-unit',
             'slider-navi': 'title-navi',
             'slider-rs': 'title-rs'
@@ -298,6 +317,7 @@
 
         window.onload = () => {
             initSlider('slider-290f', 'indicator-290f');
+            initSlider('slider-etd', 'indicator-etd');
             initSlider('slider-unit', 'indicator-unit');
             initSlider('slider-navi', 'indicator-navi');
             initSlider('slider-rs', 'indicator-rs');
